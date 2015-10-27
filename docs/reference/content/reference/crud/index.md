@@ -165,15 +165,13 @@ MongoClient.connect(url, function(err, db) {
     assert.equal(null, err);
     assert.equal(3, r.insertedCount);
 
-    // Update a single document
-    col.deleteOne({a:1}
-      , {$set: {b: 1}}, function(err, r) {
+    // Remove a single document
+    col.deleteOne({a:1}, function(err, r) {
       assert.equal(null, err);
       assert.equal(1, r.deletedCount);
 
-      // Update multiple documents
-      col.deleteMany({a:2}
-        , {$set: {b: 1}}, function(err, r) {
+      // Remove multiple documents
+      col.deleteMany({a:2}, function(err, r) {
         assert.equal(null, err);
         assert.equal(2, r.deletedCount);
         db.close();
